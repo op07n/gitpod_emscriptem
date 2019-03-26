@@ -1,5 +1,11 @@
 FROM gitpod/workspace-full-vnc
 
+# environment variable
+ENV EMSDK_NAME sdk-1.37.35-64bit
+
+# update the repository sources list
+RUN apt-get update
+
 # download emsdk
 RUN cd /tmp \
     && curl -Ok https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz \
