@@ -1,7 +1,5 @@
-#!/bin/bash
-set -e
+#!/bin/sh
 
-# set EMSDK environment variables
-. /emsdk/emsdk_env.sh > /dev/null
+. ~/env.txt
 
 exec "$@"
