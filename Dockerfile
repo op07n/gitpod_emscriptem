@@ -27,12 +27,15 @@ RUN apt-get clean\
     && apt-get autoremove\
     && rm -rf /var/lib/apt/lists/*
 
+# Alternative approach to change $PATH
+ENV PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/emsdk/emscripten/incoming"
+
 WORKDIR /home/gitpod_emscriptem
 
 # entrypoint
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod 755 /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+# # # COPY entrypoint.sh /entrypoint.sh
+# # RUN chmod 755 /entrypoint.sh
+# ENTRYPOINT ["/entrypoint.sh"]
 
 # default COMMAND
 # CMD ["/bin/bash"]
