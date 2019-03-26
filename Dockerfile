@@ -27,6 +27,8 @@ RUN apt-get clean\
     && apt-get autoremove\
     && rm -rf /var/lib/apt/lists/*
 
+USER gitpod
+
 # entrypoint
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
