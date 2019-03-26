@@ -1,5 +1,7 @@
 FROM gitpod/workspace-full-vnc
 
+#  https://github.com/TechStark/emscripten-docker/blob/develop/Dockerfile
+
 # environment variable
 ENV EMSDK_NAME sdk-1.37.35-64bit
 
@@ -26,9 +28,9 @@ RUN apt-get clean\
     && rm -rf /var/lib/apt/lists/*
 
 # entrypoint
-# COPY entrypoint.sh /entrypoint.sh
-# RUN chmod 755 /entrypoint.sh
-# ENTRYPOINT ["/entrypoint.sh"]
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod 755 /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 
 # default COMMAND
 # CMD ["/bin/bash"]
