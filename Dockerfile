@@ -27,7 +27,7 @@ RUN apt-get clean\
     && apt-get autoremove\
     && rm -rf /var/lib/apt/lists/*
 
-USER gitpod
+WORKDIR /home/gitpod_emscriptem
 
 # entrypoint
 COPY entrypoint.sh /entrypoint.sh
