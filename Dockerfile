@@ -28,7 +28,10 @@ RUN apt-get clean\
     && apt-get autoremove\
     && rm -rf /var/lib/apt/lists/*
 
+# Alternative approach to change $PATH
+ENV PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/emsdk/emscripten/incoming"
 
+WORKDIR /home/gitpod_emscriptem
 
 # entrypoint
 # # # COPY entrypoint.sh /entrypoint.sh
@@ -37,24 +40,3 @@ RUN apt-get clean\
 
 # default COMMAND
 # CMD ["/bin/bash"]
-
-
-# Setting env
-# SHELL ["/bin/bash", "-c"]
-RUN source /opt/emsdk/emsdk-portable/emsdk_env.sh \ 
-  && echo "PATH=$PATH">>~/env.txt \
-  && echo "EMSDK=$EMSDK">>~/env.txt \
-  && echo "EM_CONFIG=$EM_CONFIG">>~/env.txt \
-  && echo "EMSCRIPTEN=$EMSCRIPTEN">>~/env.txt
-ENV BASH_ENV ~/env.txt
-RUN cat ~/env.txt>>/root/.bashrc
-
-WORKDIR /home/gitpod_emscriptem
-
-COPY entrypoint.sh /opt/entrypoint.sh
-RUN chmod +x /opt/entrypoint.sh
-
-ENTRYPOINT ["/opt/entrypoint.sh"]
-CMD /bin/bash
-
-WORKDIR /src
