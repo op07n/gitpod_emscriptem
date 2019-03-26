@@ -40,7 +40,7 @@ RUN apt-get clean\
 
 
 # Setting env
-SHELL ["/bin/bash", "-c"]
+# SHELL ["/bin/bash", "-c"]
 RUN source /opt/emsdk/emsdk-portable/emsdk_env.sh \ 
   && echo "PATH=$PATH">>~/env.txt \
   && echo "EMSDK=$EMSDK">>~/env.txt \
